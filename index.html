@@ -51,6 +51,7 @@
         
       function onKeyDown(evt){
         if(sound[evt.key]){
+          $('#hint').fadeOut();
           sound[evt.key].audio.play();
         
           var maxPoint = new Point(view.size.width, view.size.height);
@@ -77,6 +78,9 @@
             circles[i].remove();
             circles.splice(i, 1);
           }
+          if (circles.length <= 0){
+            $('#hint').fadeIn();
+          }
         }
       }
     </script>
@@ -87,6 +91,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <canvas id="mycanvas" resize="true"></canvas>
+    <div id="hint">Press <span>a-z</span> for the magic</div>
     
   </body>
 </html>
